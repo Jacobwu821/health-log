@@ -1,10 +1,10 @@
 {
   "profile": {
-    "height_cm": null,
-    "weight_kg": null,
-    "age": null,
-    "sex": null,
-    "goal": null,
+    "height_cm": 164,
+    "weight_kg": 75.6,
+    "age": 25,
+    "sex": "男",
+    "goal": "练出腹肌",
     "activity": null
   },
   "targets": {
@@ -16,5 +16,5 @@
     "sets_week_min": null,
     "sets_week_max": null
   },
-  "basis": null
+  "basis": "已知 164 cm、75.6 kg、25 岁、男。按 Mifflin-St Jeor 公式，基础代谢约 1,660 kcal/天。还差平时的活动量，确定后再算每日目标。"
 }

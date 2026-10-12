@@ -1,1 +1,13 @@
-[]
+[
+ {
+  "id": "2026-10-12",
+  "date": "2026-10-12",
+  "weight_kg": 75.6,
+  "sleep_h": null,
+  "energy": null,
+  "mood": null,
+  "steps": null,
+  "soreness": null,
+  "note": null
+ }
+]

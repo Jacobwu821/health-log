@@ -700,7 +700,7 @@
       for (const r of m.items) {
         const row = el('div', 'item');
         const what = el('span', 'what', r.item);
-        const small = [has(r.portion) ? r.portion : null, has(r.protein_g) ? `蛋白 ${g1(r.protein_g)} g` : null].filter(Boolean).join('，');
+        const small = [has(r.portion) ? r.portion : null, Number(r.protein_g) > 0 ? `蛋白 ${g1(r.protein_g)} g` : null].filter(Boolean).join('，');
         if (small) what.append(el('small', null, small));
         const pct = has(r.eaten_pct) ? Number(r.eaten_pct) : null;
         row.append(what, el('span', 'pct', pct === null ? '' : pct >= 100 ? '吃完' : `吃了 ${pct}%`), el('span', 'k', has(r.kcal) ? fmt(r.kcal) : '—'));
