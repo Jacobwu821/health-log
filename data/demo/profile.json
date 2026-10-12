@@ -1,0 +1,20 @@
+{
+  "profile": {
+    "height_cm": null,
+    "weight_kg": null,
+    "age": null,
+    "sex": null,
+    "goal": null,
+    "activity": null
+  },
+  "targets": {
+    "kcal": 2400,
+    "protein_g": 120,
+    "carb_g": 300,
+    "fat_g": 75,
+    "sleep_h": 8,
+    "sets_week_min": 10,
+    "sets_week_max": 20
+  },
+  "basis": "示例目标，虚构，只用来演示页面。"
+}

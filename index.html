@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F4F8F5">
+  <title>健康日志</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <a class="brand" href="./" aria-label="健康日志首页">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="52 30" stroke-linecap="round" transform="rotate(-90 16 16)"/>
+          <path d="M16 9c3.5 2.6 4.6 6.6 2.6 10.4-1 1.9-2.6 3.1-2.6 3.1s-1.6-1.2-2.6-3.1C11.4 15.6 12.5 11.6 16 9z" fill="currentColor"/>
+        </svg>
+        <span>健康日志</span>
+      </a>
+      <div class="datebar">
+        <button type="button" class="icon-btn" id="prev-week" aria-label="上一周">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="week" id="week" role="group" aria-label="选择这一周的某一天"></div>
+        <button type="button" class="icon-btn" id="next-week" aria-label="下一周">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <label class="date-field">
+          <span class="sr">选择日期</span>
+          <input type="date" id="date-input" min="2020-01-01" max="2099-12-31">
+        </label>
+        <button type="button" class="text-btn" id="go-today">回到今天</button>
+      </div>
+    </header>
+
+    <div class="notice" id="notice" hidden></div>
+
+    <p class="lede" id="lede">正在读取记录…</p>
+
+    <section class="portrait" id="today" aria-label="这一天">
+      <div class="half eat">
+        <div class="half-head">
+          <h2>吃了什么</h2>
+          <span class="muted" id="eat-meta"></span>
+        </div>
+        <div class="plate-wrap">
+          <div class="plate" id="plate"></div>
+          <ul class="meal-legend" id="meal-legend"></ul>
+        </div>
+        <div class="macros" id="macros"></div>
+      </div>
+      <div class="half move">
+        <div class="half-head">
+          <h2>练了什么</h2>
+          <div class="seg" id="view-seg" role="group" aria-label="身体地图的看法">
+            <button type="button" data-v="day">这一天</button>
+            <button type="button" data-v="week">近 7 天</button>
+            <button type="button" data-v="recovery">恢复</button>
+            <button type="button" data-v="sore">酸痛</button>
+          </div>
+        </div>
+        <div class="body-wrap">
+          <div class="figure" id="figure"></div>
+          <div class="body-side">
+            <p class="muted small" id="view-note"></p>
+            <div class="legend" id="body-legend"></div>
+            <ol class="rank" id="rank"></ol>
+            <div class="detail" id="detail"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="timeline-block">
+      <div class="block-head">
+        <h2>一天的时间线</h2>
+        <p class="muted small">圆点越大，这顿吃掉的热量越多；下方的色条是训练。</p>
+      </div>
+      <div class="chart" id="timeline"></div>
+    </section>
+
+    <div class="two-col">
+      <section class="block" id="meals-block">
+        <div class="block-head">
+          <h2>每一餐</h2>
+          <p class="muted small">根据餐前和餐后的照片，估算端上来多少、实际吃掉多少。</p>
+        </div>
+        <div class="meals" id="meals"></div>
+      </section>
+      <aside class="side">
+        <section class="card" id="state-block">
+          <h3>身体状态</h3>
+          <div id="state"></div>
+        </section>
+        <section class="card note-card" id="note-block">
+          <h3>Claude 的点评</h3>
+          <div id="note"></div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="block" id="training-block">
+      <div class="block-head">
+        <h2>训练明细</h2>
+        <p class="muted small" id="train-meta"></p>
+      </div>
+      <div class="table-scroll" id="training"></div>
+    </section>
+
+    <section class="block" id="trends">
+      <div class="block-head">
+        <h2>趋势</h2>
+        <div class="seg" id="range-seg" role="group" aria-label="时间范围">
+          <button type="button" data-v="14">14 天</button>
+          <button type="button" data-v="28">28 天</button>
+          <button type="button" data-v="90">90 天</button>
+        </div>
+      </div>
+      <div class="trend-grid">
+        <figure class="panel wide" id="energy-panel">
+          <figcaption>
+            <h3>每日能量</h3>
+            <p class="muted small">向上是吃进的三大营养素热量，向下是运动消耗。点一根柱子跳到那天。</p>
+          </figcaption>
+          <div class="legend" id="energy-legend"></div>
+          <div class="chart" id="energy-chart"></div>
+        </figure>
+        <figure class="panel" id="weight-panel">
+          <figcaption><h3>体重</h3><p class="muted small" id="weight-meta"></p></figcaption>
+          <div class="chart" id="weight-chart"></div>
+        </figure>
+        <figure class="panel" id="sleep-panel">
+          <figcaption><h3>睡眠与精力</h3><p class="muted small">柱子是睡了几小时，上方圆点越大精力越好。</p></figcaption>
+          <div class="chart" id="sleep-chart"></div>
+        </figure>
+        <figure class="panel wide" id="calendar-panel">
+          <figcaption><h3>热量日历</h3><p class="muted small" id="calendar-meta"></p></figcaption>
+          <div class="chart" id="calendar-chart"></div>
+          <div class="legend" id="calendar-legend"></div>
+        </figure>
+        <figure class="panel wide" id="matrix-panel">
+          <figcaption><h3>肌群 × 日期</h3><p class="muted small">每格是当天这个肌群的有效组数。点一格跳到那天。</p></figcaption>
+          <div class="chart" id="matrix-chart"></div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" id="profile-block">
+      <div class="block-head">
+        <h2>我的信息与目标</h2>
+        <p class="muted small" id="profile-meta"></p>
+      </div>
+      <div class="profile" id="profile"></div>
+    </section>
+
+    <footer class="foot">
+      <p id="foot-text">记录由 Claude 根据你发来的照片和描述估算。照片估算热量的误差不小，尤其是油、酱料和看不见的部分，每样食物都标了把握程度。</p>
+      <button type="button" class="text-btn" id="demo-toggle">看看填满数据的样子</button>
+    </footer>
+  </div>
+
+  <div class="tip" id="tip" role="status" hidden></div>
+
+  <script src="assets/vendor/d3.min.js"></script>
+  <script src="assets/body-shapes.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

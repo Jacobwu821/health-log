@@ -1,0 +1,20 @@
+{
+  "profile": {
+    "height_cm": null,
+    "weight_kg": null,
+    "age": null,
+    "sex": null,
+    "goal": null,
+    "activity": null
+  },
+  "targets": {
+    "kcal": null,
+    "protein_g": null,
+    "carb_g": null,
+    "fat_g": null,
+    "sleep_h": null,
+    "sets_week_min": null,
+    "sets_week_max": null
+  },
+  "basis": null
+}
