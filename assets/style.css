@@ -343,6 +343,7 @@ button, input { font: inherit; color: inherit; }
 .item .k { font-family: var(--font-num); font-weight: 600; white-space: nowrap; text-align: right; min-width: 3em; }
 .item .chip { justify-self: start; }
 .item-meta { grid-column: 1 / -1; display: flex; gap: 6px; flex-wrap: wrap; }
+.item-meta .chip { white-space: normal; border-radius: 10px; line-height: 1.5; }
 
 /* state */
 .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }

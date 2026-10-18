@@ -1,1 +1,19 @@
-[]
+[
+ {
+  "id": "2026-10-17-w1",
+  "date": "2026-10-17",
+  "time": null,
+  "type": "运动",
+  "exercise": "羽毛球双打",
+  "sets": null,
+  "reps": null,
+  "load_kg": null,
+  "duration_min": 90,
+  "distance_km": null,
+  "kcal_burn": 510,
+  "primary": "quads,calves",
+  "secondary": "glutes,front_delts,forearms",
+  "rpe": null,
+  "note": "按休闲双打 5.5 MET 估，已扣掉基础消耗"
+ }
+]
