@@ -1077,6 +1077,9 @@
   const renderProfile = (ctx) => {
     const box = $('#profile');
     box.replaceChildren();
+    const section = $('#profile-block');
+    section.hidden = ctx.D.profile.show_on_page === false;
+    if (section.hidden) return;
     const p = (ctx.D.profile && ctx.D.profile.profile) || {};
     const t = ctx.D.targets || {};
     const field = (lab, v, unit) => {
